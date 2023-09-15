@@ -1,5 +1,5 @@
 import { assert } from "https://deno.land/std@0.201.0/assert/mod.ts";
-import PlayerEntity from "../../components/entities/player.ts";
+import PlayerEntity from "../../models/entities/player.ts";
 
 Deno.test("PlayerEntity setStatus Valid", () => {
   const player = new PlayerEntity({

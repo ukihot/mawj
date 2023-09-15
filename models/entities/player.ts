@@ -14,6 +14,14 @@ export default class PlayerEntity {
     this._profile = props.profile;
   }
 
+  get id(): PlayerId {
+    return this._id;
+  }
+
+  get profile(): PlayerProfile {
+    return this._profile;
+  }
+
   get status(): PlayerStatus {
     return this._status;
   }
@@ -29,9 +37,9 @@ export default class PlayerEntity {
 
 // Player型の定義
 type Player = {
-  id: PlayerId;
-  status: PlayerStatus;
-  profile: PlayerProfile;
+  id: z.infer<typeof id>;
+  status: z.infer<typeof status>;
+  profile: z.infer<typeof profile>;
 };
 
 // PlayerId型の定義
@@ -47,7 +55,7 @@ type PlayerProfile = z.infer<typeof profile>;
 const profile = z.object({
   name: z.string(),
   gender: z.enum(["FEMALE", "MALE"]),
-  height: z.number().min(140).max(210),
-  weight: z.number().min(40).max(85),
+  height: z.number().min(140).max(210).optional(),
+  weight: z.number().min(40).max(85).optional(),
   uniform_number: z.string().min(1).max(3),
 });

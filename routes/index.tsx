@@ -1,11 +1,12 @@
 import { useSignal } from "@preact/signals";
-import Counter from "../islands/Counter.tsx";
 import ScenarioList from "../islands/ScenarioList.tsx";
+import { EntryForm } from "../islands/EntryForm.tsx";
 
 export default function Home() {
   const count = useSignal(3);
   return (
     <>
+      <EntryForm />
       <div class="px-4 py-8 mx-auto bg-[#86efac]">
         <label class="relative inline-flex items-center mr-5 cursor-pointer">
           <input type="checkbox" value="" class="sr-only peer" checked />
