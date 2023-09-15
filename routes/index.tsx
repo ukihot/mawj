@@ -1,33 +1,41 @@
-import { useSignal } from "@preact/signals";
+import { useState } from "preact/hooks";
 import ScenarioList from "../islands/ScenarioList.tsx";
 import { EntryForm } from "../islands/EntryForm.tsx";
+import { Switch } from "../components/Switch.tsx";
+
+export interface Scenario {
+  code: number;
+  scenario: string;
+  isSuccess: boolean;
+}
 
 export default function Home() {
-  const count = useSignal(3);
+  const [isSuccess, setIsSuccess] = useState<boolean>(true); // State for isSuccess prop
+
+  const options: Scenario[] = [
+    { code: 0, scenario: "Empty", isSuccess: true },
+    { code: 1, scenario: "Hand Touch", isSuccess: true },
+    { code: 2, scenario: "Escape", isSuccess: true },
+    { code: 3, scenario: "Low Kick", isSuccess: true },
+    { code: 4, scenario: "High Kick", isSuccess: true },
+    { code: 5, scenario: "Lion Jump", isSuccess: true },
+    { code: 6, scenario: "Dubki", isSuccess: true },
+    { code: 7, scenario: "Only Bonus", isSuccess: true },
+    { code: 8, scenario: "Pursuit", isSuccess: true },
+    { code: 9, scenario: "Tackle", isSuccess: false },
+    { code: 10, scenario: "Counter", isSuccess: false },
+    { code: 11, scenario: "Ancle Catch", isSuccess: false },
+  ];
+
   return (
     <>
+      <Switch
+        checked={isSuccess}
+        defaultChecked={true}
+        setIsSuccess={setIsSuccess}
+      />
       <EntryForm />
-      <div class="px-4 py-8 mx-auto bg-[#86efac]">
-        <label class="relative inline-flex items-center mr-5 cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer" checked />
-          <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
-          </div>
-          <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Green
-          </span>
-        </label>
-
-        <label class="relative inline-flex items-center mr-5 cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer" checked />
-          <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600">
-          </div>
-          <span class="ml-3 text-sm font-medium  dark:text-gray-300">
-            Purple
-          </span>
-        </label>
-      </div>
-
-      <ScenarioList />
+      <ScenarioList options={options} isSuccess={isSuccess} />
     </>
   );
 }

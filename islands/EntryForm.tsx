@@ -1,13 +1,42 @@
 import { JSX } from "preact";
+import { PlayerDTO } from "../services/dto/playerDTO.ts";
+import { signal } from "@preact/signals";
+import { router } from "$fresh/src/server/router.ts";
 
 export function EntryForm(props: JSX.HTMLAttributes<HTMLButtonElement>) {
+  const players = signal<PlayerDTO[]>([{
+    id: "",
+    uniform_number: "",
+    status: true,
+    name: "",
+    gender: true,
+    height: undefined,
+    weight: undefined,
+  }]);
+
   const handleSubmit = (event: Event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget as HTMLFormElement);
+    const playerDTOs: PlayerDTO[] = Array.from({ length: 18 }, (_, index) => {
+      const id = index < 9 ? `dog${index + 1}` : `cat${index - 8}`;
+      const uniform_number = formData.get(`uniform_number_${id}`) as string;
+      const name = formData.get(`name_${id}`) as string;
+      const height = parseFloat(formData.get(`height_${id}`) as string);
+      const weight = parseFloat(formData.get(`weight_${id}`) as string);
 
-    formData.forEach((value, name) => {
-      console.log(`${name}: ${value}`);
+      return {
+        id,
+        uniform_number,
+        status: true,
+        name,
+        gender: true,
+        height,
+        weight,
+      };
     });
+    console.log(playerDTOs);
+    players.value = playerDTOs;
+    //Live Scorerに遷移したい
   };
 
   return (
