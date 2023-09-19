@@ -2,12 +2,12 @@
 
 ## Overview
 
-Mawj is a product that forms a new sports ecosystem.
+Mawj is a product that establishes a new sports ecosystem.
 
 ## Features
 
-- Collection and measurement of stats data
-  - Match results visualize details quantitatively
+- Collection and measurement of statistical data
+  - Match results visualize the details quantitatively
 - Video Release
   - Several tens of minutes of data are uploaded, which are then segmented and
     edited by deep learning.
@@ -19,14 +19,12 @@ Mawj is a product that forms a new sports ecosystem.
   - Provides a unique and impressive UI with practice information organized like
     a calendar.
 - Broadcasting of tournaments
-  - It's evident that viewership is low. We are doing this to improve it in the
-    future.
+  - It's evident that the viewership is low. We are doing this to improve it in
+    the future.
 - Owned Media
   - The developer myself does not read other people's blogs, but some people may
     read them.
   - They are also allowed to link to their own Youtube and homepages.
-- Game
-  - We want to release a game someday.
 
 ### Objective
 
@@ -50,6 +48,17 @@ to enumerate the practical challenges and issues we intuitively perceive.
 
 Mawj is committed to providing new solutions to issues, not systems that make
 existing systems more convenient.
+
+### Concerns
+
+This would be unnecessary if the SNS were to remain specific to a particular
+sport. Mere dissemination of messages does not inherently yield the power to
+effect change. This concern encompasses the apprehension of confining a group
+accustomed to broadcasting information in a more public setting to a closed
+environment. It is imperative to create value in the act of dissemination within
+this environment. Indeed, there are a certain number of individuals who post
+similar content on platforms such as Instagram, X, and Facebook. It may not be
+crucial to provide a precise answer to the question "Why this service?"
 
 ### Hypothesis
 
